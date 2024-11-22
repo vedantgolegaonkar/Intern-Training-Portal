@@ -78,3 +78,82 @@
        - `onload`: Fires when a page or resource has loaded.
        - `onresize`: Fires when the browser window is resized.
        - `onunload`: Fires when a page is unloaded.
+    
+## How to Use Events
+
+1. Inline Events
+   - Events can be added directly to HTML elements.
+```html
+<button onclick="alert('Button Clicked!')">Click Me</button>
+```
+
+2. JavaScript Event Handlers
+
+   - Events can be assigned in JavaScript for better separation od concerns.
+  
+```html
+<button id="myButton">Click Me</button>
+<script>
+ document.getElementById("myButton").onclick = function() {
+     alert("Button Clicked!");
+ };
+</script>
+ ```
+
+3. Event Listners
+
+   - The `addEventListner` method is the most robust way to handle events.
+```html
+<button id="myButton">Click Me</button>
+<script>
+    document.getElementById("myButton").addEventListener("click", function() {
+        alert("Button Clicked!");
+    });
+</script>
+```
+
+
+---
+
+
+## Common Events
+
+| Event | Description | Example |
+|-------|-------------|---------|
+|`onclick`|Triggers when an element is clicked.|`<button onclick="doSomething()">Click</button>`|
+|`oncharge`|Fires when the value of an input changes.|`<input onchange="validate()">`|
+|`onmouseover`|Fires when the mouse hovers over an element.|`<div onmouseover="highlight()">Hover Me</div>`|
+|`onkeydown`|Fires when a key is pressed down.|`<input onkeydown="logKey()">`|
+|`onload`|Fires when a page/resource finishes loading.|`<body onload="initPage()">`|
+|`onfocus`|Fires when an element gains focus.|`<input onfocus="highlightField()">`|
+
+
+---
+
+### Events Example
+
+```html
+<form onsubmit="return validateForm()">
+    <input type="text" id="username" placeholder="Enter Username" onblur="checkInput()">
+    <button type="submit">Submit</button>
+</form>
+<script>
+    function validateForm() {
+        alert("Form Submitted!");
+        return false; // Prevents form submission for demo purposes
+    }
+    function checkInput() {
+        alert("Input Lost Focus!");
+    }
+</script>
+```
+
+---
+
+## Combining Attributes and Events
+
+```html
+<input type="text" id="name" placeholder="Enter Name" onchange="validateName()" required>
+```
+
+Attributes define the properties of the element, while events define interactivity. Together, they make web pages dynamic and responsive. 
